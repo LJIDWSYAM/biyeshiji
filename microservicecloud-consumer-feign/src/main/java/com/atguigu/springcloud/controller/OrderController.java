@@ -47,7 +47,12 @@ public class OrderController {
     @ResponseBody
     @RequestMapping("/doMiaosha")
     public Result<String> doMiaosha(String miaoshagoods_id, HttpSession session){
-        return seckillClientService.doMiaosha(miaoshagoods_id);
+        UserInfo userInfo = (UserInfo) session.getAttribute("UserInfo");
+        String user_account = userInfo.getUser_account();
+        MiaoShaMessage miaoShaMessage=new MiaoShaMessage();
+        miaoShaMessage.setMiaoshagoods_id(miaoshagoods_id);
+        miaoShaMessage.setUser_account(user_account);
+        return seckillClientService.doMiaosha(miaoShaMessage);
     }
 
 

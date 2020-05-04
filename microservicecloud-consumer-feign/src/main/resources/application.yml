@@ -11,6 +11,20 @@ feign:
   hystrix:
     enabled: true
 
+hystrix:
+  command:
+    default:  #default全局有效，service id指定应用有效
+      execution:
+        timeout:
+          #是否开启超时熔断
+          enabled: true
+        isolation:
+          thread:
+            timeoutInMilliseconds: 4000 #断路器超时时间，默认1000ms
+ribbon:
+  eureka:
+    enabled: true
+
 spring:
   thymeleaf:
     cache: false
@@ -33,3 +47,6 @@ rabbitmq:
   username: guest
   password: guest
   #虚拟host 可以不设置,使用server默认host
+
+
+

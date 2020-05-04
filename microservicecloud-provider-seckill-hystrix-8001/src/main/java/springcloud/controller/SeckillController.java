@@ -3,10 +3,7 @@ package springcloud.controller;
 import com.atguigu.springcloud.entities.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import springcloud.Utils.CodeMsg;
 import springcloud.Utils.RedisUtil;
@@ -43,12 +40,9 @@ public class SeckillController {
 
     @ResponseBody
     @RequestMapping("/doMiaosha")
-    public Result<String> checkGoodsStock(String miaoshagoods_id,HttpSession session){
-        UserInfo userInfo = (UserInfo) session.getAttribute("UserInfo");
-        String user_account = userInfo.getUser_account();
-        MiaoShaMessage miaoShaMessage=new MiaoShaMessage();
-        miaoShaMessage.setMiaoshagoods_id(miaoshagoods_id);
-        miaoShaMessage.setUser_account(user_account);
+    public Result<String> doMiaosha(@RequestBody MiaoShaMessage miaoShaMessage, HttpSession session){
+        String miaoshagoods_id=miaoShaMessage.getMiaoshagoods_id();
+        System.out.println(miaoShaMessage);
         Order order=orderService.isRepeatOrder(miaoShaMessage);
         if (order==null){//如果没有订单，生成订单
             String key="goods"+miaoshagoods_id;

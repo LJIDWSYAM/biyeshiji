@@ -3,6 +3,14 @@ package com.atguigu.springcloud.entities;
 import java.io.Serializable;
 
 public class MiaoShaMessage implements Serializable {
+    @Override
+    public String toString() {
+        return "MiaoShaMessage{" +
+                "user_account='" + user_account + '\'' +
+                ", miaoshagoods_id='" + miaoshagoods_id + '\'' +
+                '}';
+    }
+
     private String user_account;
     private String miaoshagoods_id;
 

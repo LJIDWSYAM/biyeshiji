@@ -20,6 +20,12 @@
             <artifactId>microservicecloud-api</artifactId>
             <version>${project.version}</version>
         </dependency>
+
+        <!--健康调度-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
         <!-- Ribbon相关 -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>

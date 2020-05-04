@@ -2,6 +2,7 @@ package com.atguigu.springcloud.service;
 
 import com.atguigu.springcloud.Utils.CodeMsg;
 import com.atguigu.springcloud.Utils.Result;
+import com.atguigu.springcloud.entities.MiaoShaMessage;
 import feign.hystrix.FallbackFactory;
 import org.springframework.stereotype.Component;
 
@@ -21,7 +22,7 @@ public class SeckillClientServiceFallbackFactory implements FallbackFactory<Seck
     public SeckillClientService create(Throwable throwable) {
         return new SeckillClientService() {
             @Override
-            public Result<String> doMiaosha(String miaoshagoods_id) {
+            public Result<String> doMiaosha(MiaoShaMessage miaoShaMessage) {
                 return Result.error(CodeMsg.stop);
             }
         };
